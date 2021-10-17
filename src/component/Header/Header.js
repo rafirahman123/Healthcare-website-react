@@ -1,9 +1,10 @@
-import Button from '@restart/ui/esm/Button';
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hook/useAuth';
 
 const Header = () => {
+    const { user, logOut } = useAuth();
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -16,24 +17,29 @@ const Header = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Nav className="mx-auto">
                             <Link to="/home">
-                                <button type="button" class="btn btn-outline-info mx-2">Home</button>
+                                <button type="button" className="btn btn-outline-info mx-2">Home</button>
                             </Link>
                             <Link to="/doctors">
-                                <button type="button" class="btn btn-outline-info mx-2">Doctors</button>
+                                <button type="button" className="btn btn-outline-info mx-2">Doctors</button>
                             </Link>
                             <Link to="/blogs">
-                                <button type="button" class="btn btn-outline-info mx-2">Blogs</button>
+                                <button type="button" className="btn btn-outline-info mx-2">Blogs</button>
                             </Link>
 
                         </Nav>
-                        <Link to="/login">
-                            <button type="button" class="btn btn-outline-info ">Login</button>
-                        </Link>
+                        {user?.email ?
+
+                            <button onClick={logOut} type="button" className="btn btn-outline-info ">Logout</button> :
+
+                            <Link to="/login">
+                                <button type="button" className="btn btn-outline-info ">Login</button>
+                            </Link>
+                        }
                         <Link to="/register">
-                            <button type="button" class="btn btn-outline-info mx-2">SignUp</button>
+                            <button type="button" className="btn btn-outline-info mx-2">SignUp</button>
                         </Link>
                         <Navbar.Text>
-                            Signed in as: <a href="#login">Mark Otto</a>
+                            Signed in as: <a href="#login">{user?.displayName}</a>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
