@@ -7,9 +7,8 @@ import Footer from './component/Footer/Footer';
 import Header from './component/Header/Header';
 import Home from './component/Home/Home';
 import Notfound from './component/Notfound/Notfound';
-import Login from './component/User/Login/Login';
+import LoginRegistration from './component/User/Login/LoginRegistration';
 import PrivateRoute from './component/User/PrivateRoute/PrivateRoute';
-import Registration from './component/User/Registration/Registration';
 import AuthProvider from './Context/AuthProvider';
 
 function App() {
@@ -35,10 +34,10 @@ function App() {
               <Details></Details>
             </PrivateRoute>
             <Route path="/login">
-              <Login></Login>
+              <LoginRegistration></LoginRegistration>
             </Route>
             <Route path="/register">
-              <Registration></Registration>
+              <LoginRegistration></LoginRegistration>
             </Route>
             <Route path="*">
               <Notfound></Notfound>

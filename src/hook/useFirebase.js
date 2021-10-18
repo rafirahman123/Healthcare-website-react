@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import InitializeAuthentication from "../component/User/firebase/firebase.init";
 
@@ -7,8 +7,44 @@ InitializeAuthentication();
 const useFirebase = () => {
     const [user, setUser] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const [name, setName] = useState('');
+    const [error, setError] = useState('');
 
     const auth = getAuth();
+
+
+    const registerNewUser = (email, password) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                setUserName();
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+    }
+
+
+    const setUserName = () => {
+        updateProfile(auth.currentUser, { displayName: name })
+            .then(result => { });
+    }
+
+
+    const signInUsingEmailPassword = (email, password) => {
+        setIsLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                setUser(result.user);
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+    }
+
 
     const signInUsingGoogle = () => {
         setIsLoading(true);
@@ -19,6 +55,8 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false));
     }
+
+
     // observed user state change
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -44,7 +82,9 @@ const useFirebase = () => {
         user,
         isLoading,
         signInUsingGoogle,
-        logOut
+        logOut,
+        signInUsingEmailPassword,
+        registerNewUser
     }
 }
 
