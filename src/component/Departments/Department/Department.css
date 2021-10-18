@@ -15,6 +15,6 @@
 }
 
 .card:hover{
-    box-shadow: 30px 30px 30px 30px lightgray;
+    box-shadow: 30px 20px 30px 30px lightgray;
     border: 1px solid lightgrey;
 }

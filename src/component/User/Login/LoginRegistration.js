@@ -44,14 +44,14 @@ const LoginRegistration = () => {
 
     return (
         <div>
-            <form onSubmit={handleLoginRegistration} className='w-25 border mx-auto m-5 p-5 rounded'>
+            <form onSubmit={handleLoginRegistration} className='w-25 border mx-auto m-5 p-5 rounded shadow-lg'>
                 <h3 className='text-primary'>Please {isLogin ? 'Login' : 'Register'}</h3>
                 {!isLogin && <div className="row mb-3">
                     <label htmlFor="inputName" className="col-sm-2 col-form-label">Name: </label>
                     <input onBlur={handleNamedChanged} type="text" className="form-control" id="inputAddress" placeholder="Enter Your Name" />
                 </div>}
                 <div className="row mb-3">
-                    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email: </label>
+                    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label ">Email: </label>
                     <div onBlur={handleEmailChange} className="col-sm-10">
                         <input type="email" className="form-control" id="inputEmail3" required />
                     </div>
