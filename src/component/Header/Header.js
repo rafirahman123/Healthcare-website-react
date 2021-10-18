@@ -9,8 +9,8 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">
-                        Healthcare
+                    <Navbar.Brand href="#home" className="text-info">
+                        Healthcare-diagnostic-center
                     </Navbar.Brand>
                     <Navbar.Toggle />
 
@@ -39,7 +39,7 @@ const Header = () => {
                             <button type="button" className="btn btn-outline-info mx-2">SignUp</button>
                         </Link>
                         <Navbar.Text>
-                            Signed in as: <a href="#login">{user?.displayName}</a>
+                            <span className="text-info">Signed in as:</span> <a href="#login">{user?.displayName}</a>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
