@@ -4,7 +4,6 @@ import './Departments.css';
 
 const Departments = () => {
     const [departments, setDepartments] = useState([]);
-
     useEffect(() => {
         fetch('departments.json')
             .then(res => res.json())

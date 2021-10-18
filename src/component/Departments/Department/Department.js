@@ -12,7 +12,7 @@ const Department = ({ department }) => {
                     <div class="card-body">
                         <h5 class="card-title">{name}</h5>
                         <p class="card-text">{description}</p>
-                        <Link to={`/booking/${id}`}>
+                        <Link to={`/details/${id}`}>
                             <button type="button" class="btn btn-outline-info m-2">Book:
                                 {name.toLowerCase()}</button>
                         </Link>
